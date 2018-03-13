@@ -23,15 +23,10 @@ public class LaunchDate {
 
     @SuppressLint("DefaultLocale")
     public String asString(long timestamp) {
-        long secondsNumber = timestamp % 60;
-        long minutesNumber = timestamp % 3600 / 60;
-        long hoursNumber = timestamp % 86400 / 3600;
-        long daysNumber = timestamp / 86400;
-
-        String days = String.valueOf(daysNumber);
-        String hours = String.format("%02d", hoursNumber);
-        String minutes = String.format("%02d", minutesNumber);
-        String seconds = String.format("%02d", secondsNumber);
+        String days = TimeLeft.getDaysLeft(timestamp);
+        String hours = TimeLeft.getHoursLeft(timestamp);
+        String minutes = TimeLeft.getMinutesLeft(timestamp);
+        String seconds = TimeLeft.getSecondsLeft(timestamp);
 
         return days + ":" + hours + ":" + minutes + ":" + seconds;
     }
